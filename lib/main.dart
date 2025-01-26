@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:sca_chat_message_app/firebase_options.dart';
 import 'config/route_strings.dart';
 import 'config/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options:DefaultFirebaseOptions.currentPlatform
+  );
   runApp(const MyApp());
 }
 
