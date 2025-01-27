@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../config/route_strings.dart';
-import '../../../../core/utils/colors.dart';
-import '../../../../core/utils/images.dart';
+import '../../../config/route_strings.dart';
+import '../../../core/utils/colors.dart';
+import '../../../core/utils/images.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

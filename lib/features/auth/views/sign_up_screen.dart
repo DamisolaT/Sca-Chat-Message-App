@@ -3,7 +3,7 @@ import 'package:sca_chat_message_app/core/shared/app_button.dart';
 import 'package:sca_chat_message_app/core/shared/custom_textform_field.dart';
 import 'package:sca_chat_message_app/core/utils/colors.dart';
 
-import '../../../../config/route_strings.dart';
+import '../../../config/route_strings.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

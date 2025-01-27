@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sca_chat_message_app/core/utils/colors.dart';
 
-import '../../../../core/utils/images.dart';
+import '../../../core/utils/images.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

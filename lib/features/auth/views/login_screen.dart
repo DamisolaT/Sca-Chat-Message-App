@@ -3,7 +3,7 @@ import 'package:sca_chat_message_app/core/shared/app_button.dart';
 import 'package:sca_chat_message_app/core/shared/custom_textform_field.dart';
 import 'package:sca_chat_message_app/core/utils/colors.dart';
 
-import '../../../../config/route_strings.dart';
+import '../../../config/route_strings.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -43,7 +43,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
       body: SafeArea(child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(children: [
+        child: Column(
+          children: [
           SizedBox(height: 32,),
           CustomTextField(controller: _emailController, hintText: "Email or Phone Number",isObscureText: false,
           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),),

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:sca_chat_message_app/core/services/firebase_services.dart';
+import 'package:sca_chat_message_app/features/auth/view_models/authentication_provider.dart';
 import 'package:sca_chat_message_app/firebase_options.dart';
 import 'config/route_strings.dart';
 import 'config/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,16 +22,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-       colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiProvider(
+      
+      providers: [
+        ChangeNotifierProvider(create: (_)=>AuthenticationProvider(firebaseService: FirebaseService())),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        navigatorKey: AppRouter.navKey,
+        onGenerateRoute: AppRouter.onGenerateRoute,
+        initialRoute: AppRouteStrings.base,
       ),
-      debugShowCheckedModeBanner: false,
-      navigatorKey: AppRouter.navKey,
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: AppRouteStrings.base,
     );
   }
 }
