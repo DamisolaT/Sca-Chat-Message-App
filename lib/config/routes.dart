@@ -12,7 +12,7 @@ class AppRouter {
 
   static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case AppRouteStrings.base:
+      case AppRouteStrings.splashScreen:
         return CupertinoPageRoute(builder: (_) => SplashScreen());
       case AppRouteStrings.signupScreen:
         return CupertinoPageRoute(builder: (_) => SignUpScreen());
@@ -26,5 +26,20 @@ class AppRouter {
       default:
         return CupertinoPageRoute(builder: (_) => SplashScreen());
     }
+  }
+  static Future<void> push(String name, {Object? arg}) async {
+    await navKey.currentState?.pushNamed(name, arguments: arg);
+  }
+
+  static void pushReplace(String name, {Object? arg}) {
+    navKey.currentState?.pushReplacementNamed(name, arguments: arg);
+  }
+
+  static void pop({Object? arg}) {
+    navKey.currentState?.pop(arg);
+  }
+
+  static void pushAndClear(String name, {Object? arg}) {
+    navKey.currentState?.pushNamedAndRemoveUntil(name, (_) => false);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../utils/colors.dart';
 
@@ -8,6 +9,8 @@ class CustomTextField extends StatefulWidget {
   final bool isObscureText;
   final String obscureCharacter;
   final String hintText;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatter;
   
   final EdgeInsetsGeometry? contentPadding;
 
@@ -18,7 +21,9 @@ class CustomTextField extends StatefulWidget {
     this.isObscureText = false,
     this.obscureCharacter = '•',
     required this.hintText,
-    this.contentPadding = const EdgeInsets.all(12), // Default padding
+    this.contentPadding = const EdgeInsets.all(12), 
+    this.validator,
+     this.inputFormatter, // Default padding
   });
 
   @override
@@ -41,6 +46,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
     return TextFormField(
       controller: widget.controller,
+      validator: widget.validator,
+      inputFormatters: widget.inputFormatter,
+
       keyboardType: widget.keyboardType,
       obscureText: widget.isObscureText ? _isObscure : false,
       obscuringCharacter: widget.obscureCharacter,
@@ -50,7 +58,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         
         constraints: BoxConstraints(maxHeight: height * 0.065, minWidth: width),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: AppColors.fillColor,
         hintText: widget.hintText,
         hintStyle: ralewayMedium.copyWith(color: Colors.grey, fontSize: 14),
       
@@ -92,3 +100,6 @@ TextStyle ralewayMedium = const TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w500,
 );
+
+final emailRegex = RegExp(
+    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
