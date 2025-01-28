@@ -25,5 +25,7 @@ class AppIcons {
   static const String messageIcon = '${basePath}message_icon$format';
   static const String settingsIcon = '${basePath}settings_icon$format';
   static const String userIcon = '${basePath}user_icon$format';
+  static const String textIcon = '${basePath}text_icon$format';
+  static const String attachIcon = '${basePath}attach_icon$format';
   
 }

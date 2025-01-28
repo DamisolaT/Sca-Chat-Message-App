@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sca_chat_message_app/core/utils/colors.dart';
 
+import '../../../config/route_strings.dart';
 import '../../../core/utils/images.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -135,41 +136,47 @@ class _HomeScreenState extends State<HomeScreen> {
                   final chat = chatData[index];
                   return Column(
                     children: [
-                      ListTile(
-                        leading: CircleAvatar(
-                          radius: 24,
-                          backgroundImage: AssetImage(chat['image']),
-                        ),
-                        title: Text(
-                          chat['name'],
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                      GestureDetector(
+                        onTap:(){
+                          Navigator.pushNamed(
+                        context, AppRouteStrings.chatScreen);
+                        },
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 24,
+                            backgroundImage: AssetImage(chat['image']),
                           ),
-                        ),
-                        subtitle: Text(chat['message']),
-                        trailing: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(chat['time'], style: const TextStyle(fontSize: 12)),
-                            if (chat['unreadCount'] > 0)
-                              Container(
-                                margin: const EdgeInsets.only(top: 4),
-                                padding: const EdgeInsets.all(6),
-                                decoration: const BoxDecoration(
-                                  color: Colors.green,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Text(
-                                  chat['unreadCount'].toString(),
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                          title: Text(
+                            chat['name'],
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          subtitle: Text(chat['message']),
+                          trailing: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(chat['time'], style: const TextStyle(fontSize: 12)),
+                              if (chat['unreadCount'] > 0)
+                                Container(
+                                  margin: const EdgeInsets.only(top: 4),
+                                  padding: const EdgeInsets.all(6),
+                                  decoration: const BoxDecoration(
+                                    color: Colors.green,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Text(
+                                    chat['unreadCount'].toString(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       const Divider(),

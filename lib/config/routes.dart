@@ -6,6 +6,7 @@ import 'package:sca_chat_message_app/features/auth/views/login_screen.dart';
 import 'package:sca_chat_message_app/features/auth/views/sign_up_screen.dart';
 
 import '../features/auth/views/splash_screen.dart';
+import '../features/home/views/chat_screen.dart';
 
 class AppRouter {
   static final navKey = GlobalKey<NavigatorState>();
@@ -20,6 +21,9 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => LoginScreen());
       case AppRouteStrings.homeScreen:
         return CupertinoPageRoute(builder: (_) => HomeScreen());
+      case AppRouteStrings.chatScreen:
+        return CupertinoPageRoute(builder: (_) => ChatScreen());
+        
         
       
 
