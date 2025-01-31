@@ -18,7 +18,7 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? loaderWidget() // Replace with your actual loader widget
+        ? loaderWidget() 
         : InkWell(
             onTap: action,
             child: Container(
@@ -49,3 +49,4 @@ Widget loaderWidget() =>  Center(
         valueColor: AlwaysStoppedAnimation<Color>(AppColors.green),
       ),
     );
+    

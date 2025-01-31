@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:sca_chat_message_app/config/route_strings.dart';
 import 'package:sca_chat_message_app/features/home/views/home.dart';
 import 'package:sca_chat_message_app/features/auth/views/login_screen.dart';
@@ -45,5 +46,10 @@ class AppRouter {
 
   static void pushAndClear(String name, {Object? arg}) {
     navKey.currentState?.pushNamedAndRemoveUntil(name, (_) => false);
+  }
+
+   static void message(String msg, {bool? isSuccessful}) {
+    ScaffoldMessenger.of(navKey.currentContext!)
+        .showSnackBar(SnackBar(content: Text(msg)));
   }
 }

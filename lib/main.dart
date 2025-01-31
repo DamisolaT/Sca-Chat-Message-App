@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sca_chat_message_app/core/services/firebase_services.dart';
 import 'package:sca_chat_message_app/features/auth/view_models/authentication_provider.dart';
+import 'package:sca_chat_message_app/features/home/view_models/chat_provider.dart';
 import 'package:sca_chat_message_app/firebase_options.dart';
 import 'config/route_strings.dart';
 import 'config/routes.dart';
@@ -23,9 +24,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      
       providers: [
-        ChangeNotifierProvider(create: (_)=>AuthenticationProvider(firebaseService: FirebaseService())),
+        ChangeNotifierProvider<AuthenticationProvider>(
+          create: (_)=>AuthenticationProvider(firebaseService: FirebaseService())
+          ),
+          ChangeNotifierProvider<ChatProvider>(
+          create: (_)=>ChatProvider(firebaseService: FirebaseService())
+          ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

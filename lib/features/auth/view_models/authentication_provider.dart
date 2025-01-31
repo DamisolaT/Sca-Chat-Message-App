@@ -1,11 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:sca_chat_message_app/core/services/firebase_services.dart';
+import 'package:sca_chat_message_app/core/shared/constants.dart';
 
 class AuthenticationProvider extends ChangeNotifier{
   final FirebaseService firebaseService;
   AuthenticationProvider({required this.firebaseService});
 
   bool loading = false;
+  File? profileImage;
+
+  void setImage(File img){
+    profileImage = img;
+    notifyListeners();
+  }
 
   Future<({bool? loggedIn, String? error})> login ({required String email, required String password}) async {
     loading = true;
@@ -25,10 +34,19 @@ class AuthenticationProvider extends ChangeNotifier{
 
 
   
-  Future<({bool? signedup, String? error})> signup ({required String email, required String password}) async {
+  Future<({bool? signedup, String? error})> signup ({
+    required String email, 
+    required String password, 
+    required String firstName,
+    required String lastName}) async {
     loading = true;
     notifyListeners();
-    final login = await firebaseService.signup(email: email, password: password);
+    final login = await firebaseService.signup(
+      email: email, 
+      password: password,
+      firstName: firstName ,
+      lastName: lastName,
+      );
     if(login.signedup??false){
       loading = false;
       notifyListeners();

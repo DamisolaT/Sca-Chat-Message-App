@@ -118,9 +118,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           text: "Sign Up",
                           action: () async {
                             if (_formKey.currentState?.validate() ?? false) {
+                             
                               await value.signup(
+                                firstName: _firstNameController.text,
+                                lastName: _lastNameController.text,
                                 email: _emailController.text,
-                                password: _passwordController.text,
+                                password: _passwordController.text, 
+                                
                               ).then((result) {
                                 if (result.error != null) {
                                   ScaffoldMessenger.of(context).showSnackBar(

@@ -69,7 +69,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         borderSide: BorderSide.none
                       ),
                       contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                    suffix: SvgPicture.asset(AppIcons.attachIcon)
+                    suffix: SvgPicture.asset(AppIcons.attachIcon) 
                     ),
                   ),
                 ),
